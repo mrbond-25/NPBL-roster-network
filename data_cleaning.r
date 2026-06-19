@@ -30,3 +30,5 @@ df4 <- df3 %>% inner_join(degs_data, join_by(Poke.x == Pokemon)) %>%
 
 #remove edges if Z score for both are below 1.5
 df_pruned <- df4 %>% filter(z.x >=1.5 | z.y >=1.5)
+
+write.csv(df_pruned,"edgelist.csv")
