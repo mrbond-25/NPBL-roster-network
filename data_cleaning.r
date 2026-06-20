@@ -35,3 +35,5 @@ df4 <- df3 %>%
 df_pruned <- df4 %>% filter(z.x >= 1.5 | z.y >= 1.5)
 
 write.csv(df_pruned, "edgelist.csv")
+
+write.csv(df3, "full_edgelist.csv")
