@@ -18,4 +18,11 @@ betweenness <- betweenness(g, weights = 1 / E(g)$weight, normalize = TRUE) %>%
 df_centrality <- eigen_centrality %>%
   inner_join(betweenness, by = "Pokemon")
 
+k_cores <- coreness(g) %>%
+  enframe(name = "Pokemon", value = "Core") %>%
+  arrange(desc(Core))
+df_centrality <- df_centrality %>%
+  inner_join(k_cores, by = "Pokemon") %>%
+  arrange(desc(Core))
+
 write_csv(df_centrality, "centrality_measures.csv")
